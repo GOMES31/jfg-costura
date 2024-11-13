@@ -1,0 +1,40 @@
+{% extends 'website/main.html' %}
+{% load static %}
+
+{% block content %}
+<main class="page-wrapper">
+    <div class="info-container">
+        <img src="{% static 'images/machine1.jpg' %}" alt="Machine 1" class="info-image">
+        <div class="info-content">
+            <h2>Container 1 - Header</h2>
+            <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+            <a href="{% url 'about' %}" class="button">Quem somos</a>
+        </div>
+    </div>
+
+    <div class="info-container info-two-columns">
+        <div class="image-container">
+            <img src="{% static 'images/machine2.jpg' %}" alt="Machine 2" class="info-image">
+        </div>
+        <div class="info-content">
+            <h2>Container 2 - Header</h2>
+            <p>Nulla consectetur nisl class sodales vestibulum nulla.</p>
+            <a href="#" id="shopButton" class="button">Visitar loja</a>
+        </div>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee">
+            {% for partner in partners %}
+                <img src="{{ partner.image.url }}" alt="{{ partner.name }} Logo">
+            {% endfor %}
+
+            {% for partner in partners %}
+                <img src="{{ partner.image.url }}" alt="{{ partner.name }} Logo">
+            {% endfor %}
+        </div>
+        
+    </div>
+
+</main>
+{% endblock content %}

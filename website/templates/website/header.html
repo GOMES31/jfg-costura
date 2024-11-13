@@ -1,0 +1,40 @@
+{% load static %}
+
+<header>
+  <nav class="navbar">
+    <div class="header-container">
+      <!-- Logo -->
+      <a href="{% url 'home' %}" class="navbar-brand">
+        <img src="{% static 'images/jfg.png' %}" class="jfg-logo" alt="JFGCostura" />
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{% url 'about' %}" class="nav-link">Quem somos</a>
+          </li>
+          <li class="nav-item"><a href="{% url 'shop' %}"  class="nav-link">Loja</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Contacte-nos</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="hamburger-button" onclick="toggleMenu()" aria-label="Toggle Mobile Navigation">
+        <i class="bi bi-list" id="hamburger"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay">
+      <button class="close-button" onclick="closeMenu()" aria-label="Close Mobile Menu">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <a onclick="closeMenu()" href="{% url 'about' %}" class="menu-link">Quem somos</a>
+      <a onclick="closeMenu()" href="{% url 'shop' %}" class="menu-link">Loja</a>
+      <a onclick="closeMenu()" href="#" class="menu-link">Contacte-nos</a>
+    </div>
+  </nav>
+</header>
