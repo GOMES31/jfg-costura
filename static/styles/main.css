@@ -39,6 +39,10 @@ a {
     color: inherit;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -59,7 +63,23 @@ table {
 .page-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
+}
+
+/* Transitions for smooth content update */
+#content>* {
+    opacity: 0;
+    animation: fadeIn 0.7s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Header Styling */
@@ -215,7 +235,6 @@ footer {
 
 /* Home Page Containers */
 .page-wrapper {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -462,7 +481,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
+    position: relative;
+    gap: 1rem;
 }
 
 
@@ -472,6 +492,8 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     text-decoration: none;
+    position: absolute;
+    display: inline-block;
 }
 
 .pagination-btn.previous {
@@ -479,7 +501,7 @@ footer {
 }
 
 .pagination-btn.next {
-    right: 0
+    right: 0;
 }
 
 .pagination-btn:hover {
@@ -488,14 +510,35 @@ footer {
 
 .pagination span {
     font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .spacer {
     flex: 1;
 }
 
-/* Image Carroussel Styling */
 
+/* Carousel Styling */
+.machine-detail-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 5px solid green;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #6c757d;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: #343a40;
+    transition: color 0.3s ease-in-out;
+}
 
 @keyframes marquee {
     from {
@@ -647,6 +690,11 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
+
+    .page-container {
+        min-height: max-content;
+    }
+
     .footer-content {
         flex-direction: column;
         align-items: flex-start;
@@ -665,7 +713,7 @@ footer {
     }
 
     .button {
-        padding: 0.3rem 0.8rem;
+        padding: 0.2rem 0.8rem;
         font-size: 0.9rem;
     }
 
@@ -714,6 +762,7 @@ footer {
 
     .pagination-btn {
         font-size: 0.8rem;
+        padding: 0.5rem;
     }
 
     .pagination span {

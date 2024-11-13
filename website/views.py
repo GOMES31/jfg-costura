@@ -1,57 +1,54 @@
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
 from .models import Machine, Partner
 
 # Create your views here.
 
 def home(request):
-    page_title = 'Home Page'
     partners = Partner.objects.filter(active=True).order_by('order')
-
-    context = {
-        'page_title': page_title,
-        'partners': partners
-
-    }
-    return render(request, 'website/home.html', context)
+    if request.headers.get('HX-Request'):
+        return render(request, 'website/partials/home.html', {'partners': partners })
+    
+    return render(request, 'website/index.html', {'partners': partners })
 
 def about(request):
-    page_title = 'About'
-    
-    context = {
-        'page_title': page_title
-    }
-
-    return render(request, 'website/about.html', context)
+    if request.headers.get('HX-Request'):
+        return render(request, 'website/partials/about.html')
+    else:
+        return redirect('home')
 
 def shop(request):
-    page_title = 'Shop'
-    machines = Machine.objects.all()
+    machines = Machine.objects.all().order_by('name') 
     paginator = Paginator(machines,5)
 
     page_number = request.GET.get('page')
     machines = paginator.get_page(page_number)
 
-    context = {
-        'page_title': page_title,
-        'machines': machines
-    }
 
-    return render(request, 'website/shop.html', context)
+    if request.headers.get('HX-Request'):
+        return render(request, 'website/partials/shop.html', {'machines': machines})
+    else:
+        return redirect('home')
 
 def machine_detail(request,slug):
-    page_title = 'Machine Details'
     machine = get_object_or_404(Machine,slug=slug)
     referer = request.META.get('HTTP_REFERER','shop/')
-    images = machine.images.all();
+    images = machine.images.all()
 
     context = {
-        'page_title': page_title,
         'machine': machine,
         'referer': referer,
         'images': images
     }
 
-    return render (request,'website/machine-detail.html',context)
+    if request.headers.get('HX-Request'):
+        return render(request, 'website/partials/machine-detail.html', context )
+    else:
+        return redirect('shop')
+
+def contact(request):
+    
+    return render(request, 'website/partials/contact.html')

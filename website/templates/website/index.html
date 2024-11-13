@@ -1,0 +1,6 @@
+{% extends 'website/main.html' %}
+{% load static %}
+
+{% block content %}
+    {% include "website/partials/home.html" with partners=partners %}
+{% endblock content %}
