@@ -1,8 +1,8 @@
 {% load static %}
 
-<div class="img-title-container">
-        <img src="{% static 'images/machine3.jpg' %}" alt="Machine 3" class="info-image">
-        <h1>Loja</h1>
+    <div class="img-title-container">
+            <img src="{% static 'images/machine3.jpg' %}" alt="Machine 3" class="info-image">
+            <h1>Loja</h1>
     </div>
     {% if machines %}
         <div class="machine-grid">
@@ -10,7 +10,6 @@
                 <div class="machine-card">
                     <a hx-get="{% url 'machine_detail' machine.slug %}"
                         hx-target="#content"
-                        hx-push-url="true"
                         hx-swap="innerHTML">
                         <img src="{{ machine.images.first.image.url }}" alt="{{ machine.name }}" class="machine-image">
                         <h3>{{ machine.name }}</h3>
@@ -46,6 +45,6 @@
 
     {% else %}
         <div class="page-description">
-        <p>Nenhuma máquina disponível no momento.</p>
-    </div>
+            <p>Nenhuma máquina disponível no momento.</p>
+    <   /div>
     {% endif %}

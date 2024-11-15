@@ -1,7 +1,22 @@
-<div class="machine-detail-container">
+<div class="machine-detail-wrapper">
     <!-- Go Back Button -->
-    <a href="{{ referer }}" class="back-button">← Voltar</a>
-    
+    <a hx-get="{% url 'shop' %}" hx-target="#content" hx-swap="innerHTML" class="back-button">← Voltar</a>
+    <div class="machine-detail-container">
+        <!-- Left side: Image Slider -->
+        <div class="slider-container">
+            <div class="slides slider">
+                {% for image in images %}
+                    <img src="{{ image.image.url }}" alt="Machine Image" class="slide">
+                {% endfor %}
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
 
+        <!-- Right side: Machine Information -->
+        <div class="machine-info">
+            <h2>{{ machine.name }}</h2>
+            <p>{{ machine.description }}</p>
+        </div>
     </div>
 </div>

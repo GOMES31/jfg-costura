@@ -9,7 +9,6 @@ function toggleMenu() {
         document.body.style.overflowY = 'hidden';
         hamburgerMenu.style.display = 'none';
 
-        console.log('MENU OPENED');
     } else {
         closeMenu();
     }

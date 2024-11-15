@@ -85,7 +85,7 @@ table {
 /* Header Styling */
 header {
     display: block;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 
@@ -490,7 +490,6 @@ footer {
     background-color: var(--jfg-red);
     color: #fff;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
     text-decoration: none;
     position: absolute;
     display: inline-block;
@@ -519,25 +518,203 @@ footer {
 }
 
 
-/* Carousel Styling */
-.machine-detail-container {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 2rem;
-    border: 5px solid green;
-}
-
+/* Slider Styling */
 .back-button {
     display: inline-block;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: #6c757d;
-    font-size: 1rem;
+    font-size: 1.3rem;
     text-decoration: none;
 }
 
 .back-button:hover {
     color: #343a40;
     transition: color 0.3s ease-in-out;
+}
+
+.machine-detail-wrapper {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.machine-detail-container {
+    display: flex;
+    gap: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.slider-container {
+    flex: 1;
+    max-width: 80%;
+    height: auto;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    align-items: center;
+}
+
+.slider img {
+    width: 100%;
+    display: none;
+    height: auto;
+    object-fit: cover;
+}
+
+.machine-info h2 {
+    font-weight: 700;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.machine-info p {
+    font-size: 1.3rem;
+}
+
+.machine-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+img.displaySlide {
+    display: block;
+}
+
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    padding: 0.3rem 0.9rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* Contact Form */
+.contact-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem;
+    padding: 1.2rem;
+    gap: 3rem;
+}
+
+/* Styling for the form section */
+.contact-form {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: var(--jfg-red);
+    border-width: 2px;
+    outline: none;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.btn-submit {
+    background-color: black;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-submit:hover {
+    background-color: #333;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info a {
+    text-decoration: underline;
+}
+
+.contact-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.contact-container p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.form-control[type="textarea"],
+textarea.form-control {
+    resize: none;
+}
+
+
+/* Email Sent Page */
+.email-sent-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1.2rem;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 50%;
+}
+
+h2.email-sent-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--jfg-red);
+}
+
+p.email-sent-text {
+    font-size: 1.3rem;
+    color: #555;
+}
+
+.error-message {
+    color: var(--jfg-red);
 }
 
 @keyframes marquee {
@@ -571,17 +748,9 @@ footer {
         height: 50vh;
     }
 
-    .button {
-        font-size: 1rem;
-    }
-
     .info-content h2 {
         font-weight: 600;
         font-size: 1.2rem;
-    }
-
-    .info-content p {
-        font-size: 0.9rem;
     }
 
     .marquee-container {
@@ -609,13 +778,40 @@ footer {
         margin-top: 1rem;
     }
 
-    .machine-card h3 {
+    .machine-card h3,
+    .contact-container p,
+    .button {
         font-size: 1rem;
     }
 
-    .price {
+    .price,
+    .info-content p {
         font-size: 0.9rem;
     }
+
+    .machine-info h2 {
+        font-size: 1.3rem;
+    }
+
+    .machine-info p {
+        font-size: 1.1rem;
+    }
+
+    .back-button,
+    p.email-sent-text {
+        font-size: 1.2rem;
+    }
+
+    .contact-container h2 {
+        font-size: 1.5rem;
+    }
+
+    h2.email-sent-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+
 }
 
 /* Smaller screens and mobile */
@@ -651,7 +847,8 @@ footer {
         font-size: 1.1rem;
     }
 
-    .info-content p {
+    .info-content p,
+    .price {
         font-size: 0.8rem;
     }
 
@@ -680,13 +877,60 @@ footer {
         margin-top: 1rem;
     }
 
-    .machine-card h3 {
+    .machine-card h3,
+    .contact-container p {
         font-size: 0.9rem;
     }
 
-    .price {
-        font-size: 0.8rem;
+    .machine-detail-container {
+        flex-direction: column;
     }
+
+    .slider-container {
+        max-width: 100%;
+    }
+
+    .machine-info h2 {
+        font-size: 1.2rem;
+    }
+
+    .machine-info p {
+        font-size: 1rem;
+    }
+
+    h2.email-sent-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .back-button,
+    p.email-sent-text {
+        font-size: 1.1rem;
+    }
+
+    .contact-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info:first-of-type {
+        order: -1;
+    }
+
+
+    .contact-info:last-of-type {
+        order: 0;
+    }
+
+    .contact-form {
+        order: 1;
+        max-width: 95%;
+    }
+
+
 }
 
 @media screen and (max-width: 480px) {
@@ -722,7 +966,8 @@ footer {
         font-size: 1rem;
     }
 
-    .info-content p {
+    .info-content p,
+    .price {
         font-size: 0.7rem;
     }
 
@@ -743,7 +988,8 @@ footer {
         font-size: 1.4rem;
     }
 
-    .page-description h2 {
+    .page-description h2,
+    .contact-container h2 {
         font-size: 1.3rem;
     }
 
@@ -752,21 +998,39 @@ footer {
         margin-top: 1rem;
     }
 
-    .machine-card h3 {
-        font-size: 0.8rem;
-    }
-
-    .price {
-        font-size: 0.7rem;
-    }
-
     .pagination-btn {
         font-size: 0.8rem;
         padding: 0.5rem;
     }
 
-    .pagination span {
+    .pagination span,
+    .contact-container p,
+    .machine-card h3 {
         font-size: 0.8rem;
     }
 
+    .machine-info h2 {
+        font-size: 1rem;
+    }
+
+    .machine-info p {
+        font-size: 0.9rem;
+    }
+
+    .back-button,
+    p.email-sent-text {
+        font-size: 1.1rem;
+    }
+
+    h2.email-sent-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .btn-submit {
+        padding: 0.8rem 0.8rem;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+    }
 }
