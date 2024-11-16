@@ -63,7 +63,7 @@ table {
 .page-container {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    min-height: 70%;
 }
 
 /* Transitions for smooth content update */
@@ -816,6 +816,11 @@ p.email-sent-text {
 
 /* Smaller screens and mobile */
 @media screen and (max-width: 768px) {
+
+    .email-sent-container {
+        max-width: 80%;
+    }
+
     .footer-content {
         gap: 0.5rem;
     }
@@ -930,14 +935,9 @@ p.email-sent-text {
         max-width: 95%;
     }
 
-
 }
 
 @media screen and (max-width: 480px) {
-
-    .page-container {
-        min-height: max-content;
-    }
 
     .footer-content {
         flex-direction: column;

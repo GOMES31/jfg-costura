@@ -19,18 +19,19 @@
 </head>
 
 <body>
-  <main class="page-container">
-    {% include 'website/partials/header.html' %}
+  
+  {% include 'website/partials/header.html' %}
 
+  <main class="page-container">
     <div id="content" >
       {% block content %}
 
       {% endblock content %}
     </div>
-
   </main>
 
   {% include 'website/partials/footer.html' %}
+
 
 
   <script src="{% static 'js/header.js' %}"></script>

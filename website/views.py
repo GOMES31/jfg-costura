@@ -76,7 +76,8 @@ def contact(request):
                 send_mail(subject, message_body, from_email, recipient_list)
                 messages.success(request, "Email enviado com sucesso!")
 
-                return render(request, 'website/partials/email-sent.html', {"name": name})
+                if request.headers.get('HX-Request') == 'true':
+                    return render(request, 'website/partials/email-sent.html', {"name": name})
             except Exception as e:
                 messages.error(request, f"Um erro ocorreu a tentar enviar o email!")
 
@@ -86,3 +87,4 @@ def contact(request):
         form = ContactForm()
     
     return render(request, 'website/partials/contact.html', {"form": form})
+
