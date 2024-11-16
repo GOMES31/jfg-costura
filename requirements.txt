@@ -1,0 +1,6 @@
+Django
+django-axes
+pillow
+psycopg
+python-dotenv
+gunicorn
